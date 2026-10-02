@@ -8,6 +8,14 @@ argument-hint: "[what the video is about]"
 
 The video is one HTML page in which every pixel is a pure function of time, `seek(t)`, rendered frame by frame with motion blur and a soundtrack placed to the millisecond. Everything specific to a brand comes from the intake; nothing is assumed. Talk to the person in their language. `SKILL_DIR` below is the folder containing this file.
 
+## 0. First run: the tools
+
+```bash
+bash SKILL_DIR/scripts/check_deps.sh
+```
+
+It lists what this machine lacks (node 18+, ffmpeg, python3, numpy) with the install commands for its system. If anything is missing, tell the person in plain words what each tool is for, show the commands, and ask once whether to install them. Install only on a yes, then rerun the check. A command that needs their password or opens its own installer (Homebrew, `sudo`) is one they run in their own terminal; give it to them and wait. Ask the intake questions meanwhile: nothing else depends on the tools until step 2.
+
 ## 1. Intake: ask for everything first
 
 Send the questions in [references/intake.md](references/intake.md) in one message. Required before anything is built:
@@ -73,4 +81,4 @@ Follow [craft.md#iterating](references/craft.md#iterating): change only what was
 
 ## Requirements
 
-The folder is self-contained. The scripts need node, ffmpeg and python3 with numpy; `setup.sh` checks them and installs Playwright's Chromium in each project. If the project lives in a repository with its own rules, follow them, and keep renders, footage, frames and `node_modules` out of version control.
+The folder is self-contained. The scripts need node 18+, ffmpeg and python3 with numpy (step 0 finds and installs what is missing); `setup.sh` adds Playwright's Chromium in each project. If the project lives in a repository with its own rules, follow them, and keep renders, footage, frames and `node_modules` out of version control.

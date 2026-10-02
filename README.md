@@ -16,7 +16,7 @@ Then ask Claude Code for a marketing video, or type `/marketing-video`.
 
 ## Requirements
 
-node, ffmpeg, and python3 with numpy. The skill installs the rest (Playwright's Chromium) in each video project.
+node 18+, ffmpeg, and python3 with numpy. You don't need to install them first: on its first run the skill checks your machine, tells you what is missing and why, and installs it for you once you agree (on macOS through Homebrew, on Linux through your package manager). It also installs Playwright's Chromium in each video project.
 
 ## License
 

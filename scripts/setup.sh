@@ -6,10 +6,7 @@ set -euo pipefail
 PROJECT="${1:?usage: setup.sh <project-dir>   (a lowercase slug, no spaces)}"
 SKILL="$(cd "$(dirname "$0")/.." && pwd)"
 
-for bin in node npm npx ffmpeg ffprobe python3; do
-  command -v "$bin" >/dev/null || { echo "missing: $bin (install it, then rerun)"; exit 1; }
-done
-python3 -c "import numpy" 2>/dev/null || { echo "missing: python numpy (pip3 install numpy)"; exit 1; }
+bash "$SKILL/scripts/check_deps.sh" || { echo "setup stopped: install the missing tools listed above, then rerun"; exit 2; }
 
 mkdir -p "$PROJECT"/{assets,fonts,footage,audio,out,preview,versions}
 [ -f "$PROJECT/scene.html" ] || cp "$SKILL/templates/scene.html" "$PROJECT/scene.html"
